@@ -4,10 +4,10 @@ from convert import Convert
 def search(week):
     # result = []
     data = Convert('data.json').get_data()
-    for item in data:
-        for week in item['开课周']:
+    for lesson in data:
+        for week in lesson['开课周']:
             if week == search_week:
-                yield item
+                yield lesson
                 break
     # return result
 
