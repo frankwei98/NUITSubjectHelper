@@ -16,23 +16,12 @@ class Convert:
         """
         :return: A list with dict in Chinese Keyword
         """
-        return list(map(translate_pinyin_attribute, self.read_json()))
-
-
-        # def what_cal_need(self):
-        #     # TODO do this in future
-        #     result = []
-        #     for class_item in self.get_data():
-        #         _ics_title = class_item['课程名称'] + class_item['授课老师'] + class_item['教室']
-        #         _ics_location = class_item['教室']
-        #         _ics_date = class_item['星期']
-        #         result.append(
-        #             dict(
-        #                 节次=self.split_int_in_string_into_list(class_item['jcdm2']),
-        #                 开课周=self.split_int_in_string_into_list(class_item['zcs']),
-        #                 星期=class_item['xq'])
-        #         )
-        #     return result
+        return list(
+            map(
+                translate_pinyin_attribute,
+                self.read_json()
+            )
+        )
 
 
 def split_int_in_string_into_list(str_of_ints):
@@ -45,6 +34,11 @@ def split_int_in_string_into_list(str_of_ints):
 
 
 def translate_pinyin_attribute(lesson):
+    """
+    WARNING: Only use this with map function
+    :param lesson: a json object that represent a lesson
+    :return: A Dictionary with Chinese Keyword
+    """
     return dict(课程编号=lesson['kcbh'],
                 班级=lesson['jxbmc'],
                 节次=split_int_in_string_into_list(lesson['jcdm2']),
