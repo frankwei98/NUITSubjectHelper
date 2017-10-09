@@ -12,9 +12,14 @@ def search(search_week):
                 # return result
 
 
+def get_simple(x):
+    return {'课程名称': x['课程名称'], '教室': x['教室']}
+
+
 if __name__ == '__main__':
     search_week = int(input('请输入第几周(阿拉伯数字)'))
     result = list(search(search_week))
+    # result = list(map(get_simple, result))
     for item in result:
         print(item)
 
