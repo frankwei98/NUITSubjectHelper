@@ -18,7 +18,7 @@ order_to_time = {
 }
 
 
-def ariabic2cn(s):
+def int2cn(s):
     d = {
         '1': '一',
         '2': '二',

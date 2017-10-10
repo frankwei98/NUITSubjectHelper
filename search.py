@@ -28,7 +28,7 @@ def get_simple(x):
         '课程名称': x['课程名称'],
         '教室': x['教室'],
         '时间': utils.get_time(x['节次']),
-        '星期': utils.ariabic2cn(x['星期'])
+        '星期': utils.int2cn(x['星期'])
     }
 
 
