@@ -6,6 +6,7 @@ LAST_DAY = FIRST_DAY + timedelta(
     weeks=16 - 1,
     days=5 - 1
 )
+
 TODAY = date.today()
 
 order_to_time = {
@@ -51,10 +52,20 @@ def days_since_first_day():
     )
 
 
+def get_simple(x):
+    return {
+        '课程名称': x['课程名称'],
+        '教室': x['教室'],
+        '星期': int2cn(x['星期']),
+        '时间': get_time(x['节次']),
+    }
+
+
 def days_left():
     return '距离最后一节课还有 {} 天'.format(
         (LAST_DAY - TODAY).days
     )
+
 
 # for test
 if __name__ == '__main__':

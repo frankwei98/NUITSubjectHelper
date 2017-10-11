@@ -5,39 +5,25 @@ data = Convert('data.json').get_data()
 
 
 def search(week):
-    # result = []
-    def search_by_week(lesson):
-        return week in lesson['开课周']
-
-    result = filter(
-        search_by_week,
-        data
-    )
-
-    # def sort_lesson_by_weekday(lesson):
-    #     return lesson['星期']
-
     return sorted(
-        result,
+        filter(
+            # Use lambda to check if 'week' was in list 'weeks' or not,
+            # so that we can filtered the lessons needed in providing week
+            lambda lesson: week in lesson['开课周'],
+            data
+        ),
         key=lambda l: l['星期']
     )
 
 
-def get_simple(x):
-    return {
-        '课程名称': x['课程名称'],
-        '教室': x['教室'],
-        '星期': utils.int2cn(x['星期']),
-        '时间': utils.get_time(x['节次']),
-    }
-
-
 if __name__ == '__main__':
     search_week = int(input('请输入第几周(阿拉伯数字)'))
-    result = search(search_week)
-    result = list(map(get_simple, result))
-    for item in result:
-        print(item)
+    result = list(
+        map(utils.get_simple,
+            search(search_week)
+            )
+    )
+    [print(item) for item in result]  # list comprehension!!!
 
     print('第 {0} 周一共有 {1} 节课'.format(
         search_week,
