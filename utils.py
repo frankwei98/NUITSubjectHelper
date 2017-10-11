@@ -56,7 +56,7 @@ def days_left():
         (LAST_DAY - TODAY).days
     )
 
-
+# for test
 if __name__ == '__main__':
     print(get_date_from_week(week=4, weekday=5).weekday())  # 4 weeks later
     print(get_date_from_week(week=4, weekday=1))  # 4 weeks later
