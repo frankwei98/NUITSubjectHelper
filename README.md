@@ -1,4 +1,4 @@
-# NUIT Subject Helper 📅
+# NUIT Schedule Helper 📅
 
 ## 一些点子
 
@@ -71,3 +71,8 @@ Example:
   > xnxqdm={学期番号}
   >
   > zc={周次}
+  
+  
+### How to write?
+
+每周为一次调用，每周写7个文件对应一周中的7天

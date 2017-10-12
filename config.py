@@ -1,0 +1,18 @@
+from datetime import date, timedelta
+
+# 服务器
+SERVER = 'http://172.13.1.32/'  # for different school use different server
+# 学期
+SEMESTER = 20171
+# Cookie
+YOUR_JSESSIONID = 'XXXXXXXXXXXXXXXXXXXXXX'
+# 上课周
+WEEKS = range(1, 17)  # return a list from 1-16 (not 17!)
+# 第一天上课和最后一天的上课时间
+FIRST_DAY = date(2017, 9, 18)
+LAST_DAY = FIRST_DAY + timedelta(
+    weeks=16 - 1,
+    days=5 - 1
+)
+
+TODAY = date.today()
