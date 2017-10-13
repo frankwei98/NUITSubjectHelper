@@ -1,5 +1,6 @@
 import json
-from datetime import date, timedelta
+from datetime import date
+
 import config
 
 order_to_time = {
@@ -13,6 +14,11 @@ order_to_time = {
 
 
 def int2cn(s):
+    """
+
+    :param s:
+    :return:
+    """
     d = {
         '1': '一',
         '2': '二',
@@ -42,10 +48,19 @@ def get_date_from_week(week=0, weekday=0):
 
 
 def get_today_week_weekday_from_date():
+    """
+
+    :return:
+    """
     return get_week_weekday_from_date(config.TODAY)
 
 
 def get_week_weekday_from_date(_date):
+    """
+
+    :param _date:
+    :return:
+    """
     week_diff = _date - date(2017, 9, 18)
     weeks = int(week_diff.days /7) + 1
     days = (week_diff.days % 7) + 1
@@ -53,6 +68,12 @@ def get_week_weekday_from_date(_date):
 
 
 def diff_from_today(week=0, weekday=0):
+    """
+
+    :param week:
+    :param weekday:
+    :return:
+    """
     return config.date.today() - config.timedelta(weeks=week - 1, days=weekday)
 
 

@@ -1,3 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
 *.json
+.vscode
+__pycache__
+.DS_Store
