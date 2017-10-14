@@ -62,9 +62,9 @@ def get_week_weekday_from_date(_date):
     :return:
     """
     week_diff = _date - date(2017, 9, 18)
-    weeks = int(week_diff.days /7) + 1
+    weeks = int(week_diff.days / 7) + 1
     days = (week_diff.days % 7) + 1
-    return {'weeks': weeks, 'weekdays':days}
+    return {'weeks': weeks, 'weekdays': days}
 
 
 def diff_from_today(week=0, weekday=0):
@@ -86,9 +86,17 @@ def get_simple(lesson):
     return {
         '课程名称': lesson['name'],
         '教室': lesson['classRoom'],
-        '星期': int2cn(str(lesson['weekday'])),
+        # '星期': int2cn(str(lesson['weekday'])),
         '时间': order_to_time[lesson['order']],
     }
+
+
+def get_reply_lesson_msg(lesson):
+    return '{name} @{location} {time}'.format(
+        name=lesson['name'],
+        location=lesson['classRoom'],
+        time=order_to_time[lesson['order']]
+    )
 
 
 def write_json(obj, fp):
@@ -111,7 +119,7 @@ def days_left():
 
     :return: A countdown message
     """
-    return '距离最后一节课还有 {} 天'.format(
+    return '离最后一节课还有 {} 天'.format(
         (config.LAST_DAY - config.TODAY).days
     )
 
