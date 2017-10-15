@@ -5,6 +5,8 @@ SERVER = 'http://172.13.1.32/'  # for different school use different server
 # 学期
 SEMESTER = 20171
 # Cookie
+USERNAME = ''
+PASSWORD = ''
 YOUR_JSESSIONID = 'XXXXXXXXXXXXXXXXXXXXXX'
 # 上课周
 WEEKS = range(1, 17)  # return a list from 1-16 (not 17!)

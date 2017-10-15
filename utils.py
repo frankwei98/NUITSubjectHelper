@@ -19,6 +19,7 @@ def int2cn(s):
     :param s:
     :return:
     """
+    s = str(s)
     d = {
         '1': '一',
         '2': '二',
@@ -26,7 +27,7 @@ def int2cn(s):
         '4': '四',
         '5': '五',
         '6': '六',
-        '7': '七',
+        '7': '日',
     }
     return d[s]
 
@@ -86,17 +87,9 @@ def get_simple(lesson):
     return {
         '课程名称': lesson['name'],
         '教室': lesson['classRoom'],
-        # '星期': int2cn(str(lesson['weekday'])),
+        # 'translate': int2cn(str(lesson['weekday'])),
         '时间': order_to_time[lesson['order']],
     }
-
-
-def get_reply_lesson_msg(lesson):
-    return '{name} @{location} {time}'.format(
-        name=lesson['name'],
-        location=lesson['classRoom'],
-        time=order_to_time[lesson['order']]
-    )
 
 
 def write_json(obj, fp):
@@ -114,19 +107,7 @@ def write_json(obj, fp):
     return True
 
 
-def days_left():
-    """
-
-    :return: A countdown message
-    """
-    return '离最后一节课还有 {} 天'.format(
-        (config.LAST_DAY - config.TODAY).days
-    )
-
-
 # for test
 if __name__ == '__main__':
     print(get_date_from_week(week=4, weekday=5).weekday())  # 4 weeks later
     print(get_date_from_week(week=4, weekday=1))  # 4 weeks later
-    print(config.LAST_DAY)
-    print(days_left())

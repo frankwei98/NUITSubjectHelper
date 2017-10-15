@@ -1,5 +1,4 @@
 import json
-from functools import reduce
 
 import utils
 
@@ -39,39 +38,7 @@ def search(week, weekday):
     )
 
 
-def get_msg_of_the_day(week, weekday):
-    """
-
-    :param week: week
-    :param weekday: weekday
-    :return: The message that user-reading-friendly
-    """
-    result = list(
-        search(week, weekday)
-    )
-    return_str = '「课表助手」\n'
-    if not result:
-        # For sequences, (strings, lists, tuples),
-        # use the fact that empty sequences are false.
-        return_str += '今天星期{} 没课! 一起出去耍吧～'.format(utils.int2cn(str(weekday)))
-    else:
-        return_str += '今天是第{}周星期{}，一共有{}节课，{} 课程如下\n'.format(
-            week,
-            utils.int2cn(str(weekday)),
-            len(result),
-            utils.days_left()
-        )
-        lessons_str = reduce(lambda x, y: '{}\n{}'.format(
-            x, y), map(utils.get_reply_lesson_msg, result))
-        return_str += lessons_str
-
-    return return_str
-
-
 if __name__ == '__main__':
     # print today's schedule
     schedule = utils.get_today_week_weekday_from_date()
-    print(get_msg_of_the_day(schedule['weeks'], schedule['weekdays']))
-    search_week = int(input('请输入第几周(阿拉伯数字)'))
-    search_weekday = int(input('请输入星期几(阿拉伯数字)'))
-    print(get_msg_of_the_day(search_week, search_weekday))
+    [print(lesson) for lesson in search(schedule['weeks'], schedule['weekdays'])]
